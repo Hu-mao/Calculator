@@ -321,6 +321,7 @@
             button12.TabIndex = 13;
             button12.Text = "*";
             button12.UseVisualStyleBackColor = false;
+            button12.Click += button12_Click;
             // 
             // button20
             // 
@@ -340,6 +341,7 @@
             button20.TabIndex = 21;
             button20.Text = "⌫";
             button20.UseVisualStyleBackColor = false;
+            button20.Click += button20_Click;
             // 
             // button24
             // 
@@ -359,6 +361,7 @@
             button24.TabIndex = 25;
             button24.Text = "÷";
             button24.UseVisualStyleBackColor = false;
+            button24.Click += button24_Click;
             // 
             // button25
             // 
@@ -418,6 +421,7 @@
             button13.TabIndex = 34;
             button13.Text = "√x";
             button13.UseVisualStyleBackColor = false;
+            button13.Click += button13_Click;
             // 
             // button14
             // 
@@ -456,6 +460,7 @@
             button15.TabIndex = 36;
             button15.Text = "x²";
             button15.UseVisualStyleBackColor = false;
+            button15.Click += button15_Click;
             // 
             // button17
             // 
@@ -494,6 +499,7 @@
             button18.TabIndex = 38;
             button18.Text = "1/x";
             button18.UseVisualStyleBackColor = false;
+            button18.Click += button18_Click;
             // 
             // button19
             // 
@@ -513,6 +519,7 @@
             button19.TabIndex = 37;
             button19.Text = "%";
             button19.UseVisualStyleBackColor = false;
+            button19.Click += button19_Click;
             // 
             // button16
             // 

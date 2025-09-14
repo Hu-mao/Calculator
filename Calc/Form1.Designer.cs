@@ -62,7 +62,6 @@
             label8 = new Label();
             label9 = new Label();
             label20 = new Label();
-            label21 = new Label();
             label12 = new Label();
             label13 = new Label();
             label14 = new Label();
@@ -71,6 +70,7 @@
             label17 = new Label();
             label11 = new Label();
             label18 = new Label();
+            button21 = new Button();
             SuspendLayout();
             // 
             // label1
@@ -441,6 +441,7 @@
             button14.TabIndex = 33;
             button14.Text = "C";
             button14.UseVisualStyleBackColor = false;
+            button14.Click += button14_Click;
             // 
             // button15
             // 
@@ -480,6 +481,7 @@
             button17.TabIndex = 35;
             button17.Text = "CE";
             button17.UseVisualStyleBackColor = false;
+            button17.Click += button17_Click;
             // 
             // button18
             // 
@@ -652,18 +654,6 @@
             label20.TabIndex = 62;
             label20.Text = "Memory";
             // 
-            // label21
-            // 
-            label21.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
-            label21.AutoSize = true;
-            label21.Font = new Font("Segoe UI", 21F, FontStyle.Bold);
-            label21.ForeColor = SystemColors.HighlightText;
-            label21.Location = new Point(665, -2);
-            label21.Name = "label21";
-            label21.Size = new Size(50, 47);
-            label21.TabIndex = 63;
-            label21.Text = "←";
-            // 
             // label12
             // 
             label12.Font = new Font("Segoe UI", 13F);
@@ -756,12 +746,29 @@
             label18.Text = "2";
             label18.TextAlign = ContentAlignment.MiddleLeft;
             // 
+            // button21
+            // 
+            button21.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            button21.BackColor = Color.FromArgb(30, 30, 30);
+            button21.FlatAppearance.BorderSize = 0;
+            button21.FlatStyle = FlatStyle.Flat;
+            button21.Font = new Font("Segoe UI", 21F, FontStyle.Bold);
+            button21.ForeColor = SystemColors.ButtonFace;
+            button21.Location = new Point(362, -5);
+            button21.Name = "button21";
+            button21.Size = new Size(68, 52);
+            button21.TabIndex = 72;
+            button21.Text = "→";
+            button21.UseVisualStyleBackColor = false;
+            button21.Click += button21_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(30, 30, 30);
-            ClientSize = new Size(727, 613);
+            ClientSize = new Size(442, 613);
+            Controls.Add(button21);
             Controls.Add(label11);
             Controls.Add(label18);
             Controls.Add(label16);
@@ -770,7 +777,6 @@
             Controls.Add(label15);
             Controls.Add(label12);
             Controls.Add(label13);
-            Controls.Add(label21);
             Controls.Add(label20);
             Controls.Add(label8);
             Controls.Add(label9);
@@ -846,7 +852,6 @@
         private Label label8;
         private Label label9;
         private Label label20;
-        private Label label21;
         private Label label12;
         private Label label13;
         private Label label14;
@@ -855,5 +860,6 @@
         private Label label17;
         private Label label11;
         private Label label18;
+        private Button button21;
     }
 }

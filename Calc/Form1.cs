@@ -16,8 +16,8 @@ namespace Calc
     {
         string[] actions = new string[2];
         decimal? num1 = 0, num2;
-        char action;
-        bool toclear = false, cleared = true, canrewrite = false, canwrite = true, canclear;
+        char? action;
+        bool toclear = false, cleared = true, canrewrite = false, canwrite = true, canclear, resized = false;
         public Form1()
         {
             InitializeComponent();
@@ -108,7 +108,7 @@ namespace Calc
             {
                 num1 = ActionToDo(num1, LabToDec());
                 label2.Text = (num1).ToString() + " " + action;
-                toclear = true; canwrite = false;canclear = false;
+                toclear = true; canwrite = false; canclear = false;
             }
         }
 
@@ -207,13 +207,33 @@ namespace Calc
                 if (label1.Text.Split().Count() > 0)
                 {
                     string[] array = label1.Text.ToCharArray().Select(c => c.ToString()).ToArray();
-                    label1.Text = ""; 
+                    label1.Text = "";
                     for (int i = 0; i < array.Length - 1; i++)
                     {
                         label1.Text += array[i].ToString();
                     }
                 }
             }
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            num1 = 0; num2 = null; label1.Text = ""; label2.Text = ""; action = null;
+        }
+
+        private void button17_Click(object sender, EventArgs e)
+        {
+            num1 = 0; label1.Text = "";
+            if (label1.Text.Split(" ").Count() == 3)
+            {
+                label2.Text = "";
+            }
+        }
+
+        private void button21_Click(object sender, EventArgs e)
+        {
+            if(!resized){Size = new Size(745, 660);resized = true; button21.Text = "←"; }
+            else {Size = new Size(460, 660);resized = false;button21.Text = "→"; }
         }
     }
 }

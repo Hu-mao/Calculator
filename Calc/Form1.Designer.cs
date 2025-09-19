@@ -71,6 +71,10 @@
             label11 = new Label();
             label18 = new Label();
             button21 = new Button();
+            button22 = new Button();
+            button23 = new Button();
+            button27 = new Button();
+            button28 = new Button();
             SuspendLayout();
             // 
             // label1
@@ -608,23 +612,25 @@
             label7.Size = new Size(41, 28);
             label7.TabIndex = 45;
             label7.Text = "MS";
+            label7.Click += label7_Click;
             // 
             // label10
             // 
             label10.AutoSize = true;
-            label10.Font = new Font("Segoe UI", 12F);
+            label10.Font = new Font("Segoe UI", 12F, FontStyle.Underline);
             label10.ForeColor = SystemColors.HighlightText;
             label10.Location = new Point(473, 9);
             label10.Name = "label10";
             label10.Size = new Size(57, 28);
             label10.TabIndex = 48;
             label10.Text = "Book";
+            label10.Click += label10_Click;
             // 
             // label8
             // 
-            label8.Font = new Font("Segoe UI", 13F);
+            label8.Font = new Font("Segoe UI", 12F);
             label8.ForeColor = Color.Gray;
-            label8.Location = new Point(517, 61);
+            label8.Location = new Point(517, 59);
             label8.Name = "label8";
             label8.RightToLeft = RightToLeft.Yes;
             label8.Size = new Size(200, 30);
@@ -642,6 +648,7 @@
             label9.TabIndex = 54;
             label9.Text = "2";
             label9.TextAlign = ContentAlignment.MiddleLeft;
+            label9.TextChanged += label9_TextChanged;
             // 
             // label20
             // 
@@ -653,12 +660,13 @@
             label20.Size = new Size(86, 28);
             label20.TabIndex = 62;
             label20.Text = "Memory";
+            label20.Click += label20_Click;
             // 
             // label12
             // 
-            label12.Font = new Font("Segoe UI", 13F);
+            label12.Font = new Font("Segoe UI", 12F);
             label12.ForeColor = Color.Gray;
-            label12.Location = new Point(517, 171);
+            label12.Location = new Point(517, 169);
             label12.Name = "label12";
             label12.RightToLeft = RightToLeft.Yes;
             label12.Size = new Size(200, 28);
@@ -679,9 +687,9 @@
             // 
             // label14
             // 
-            label14.Font = new Font("Segoe UI", 13F);
+            label14.Font = new Font("Segoe UI", 12F);
             label14.ForeColor = Color.Gray;
-            label14.Location = new Point(517, 275);
+            label14.Location = new Point(517, 273);
             label14.Name = "label14";
             label14.RightToLeft = RightToLeft.Yes;
             label14.Size = new Size(200, 28);
@@ -702,9 +710,9 @@
             // 
             // label16
             // 
-            label16.Font = new Font("Segoe UI", 13F);
+            label16.Font = new Font("Segoe UI", 12F);
             label16.ForeColor = Color.Gray;
-            label16.Location = new Point(517, 384);
+            label16.Location = new Point(517, 382);
             label16.Name = "label16";
             label16.RightToLeft = RightToLeft.Yes;
             label16.Size = new Size(200, 28);
@@ -725,9 +733,9 @@
             // 
             // label11
             // 
-            label11.Font = new Font("Segoe UI", 13F);
+            label11.Font = new Font("Segoe UI", 12F);
             label11.ForeColor = Color.Gray;
-            label11.Location = new Point(515, 498);
+            label11.Location = new Point(515, 496);
             label11.Name = "label11";
             label11.RightToLeft = RightToLeft.Yes;
             label11.Size = new Size(200, 28);
@@ -754,7 +762,7 @@
             button21.FlatStyle = FlatStyle.Flat;
             button21.Font = new Font("Segoe UI", 21F, FontStyle.Bold);
             button21.ForeColor = SystemColors.ButtonFace;
-            button21.Location = new Point(362, -5);
+            button21.Location = new Point(647, -5);
             button21.Name = "button21";
             button21.Size = new Size(68, 52);
             button21.TabIndex = 72;
@@ -762,12 +770,96 @@
             button21.UseVisualStyleBackColor = false;
             button21.Click += button21_Click;
             // 
+            // button22
+            // 
+            button22.BackColor = Color.FromArgb(45, 45, 48);
+            button22.BackgroundImageLayout = ImageLayout.Center;
+            button22.FlatAppearance.BorderColor = Color.Silver;
+            button22.FlatAppearance.BorderSize = 0;
+            button22.FlatAppearance.MouseDownBackColor = Color.Silver;
+            button22.FlatAppearance.MouseOverBackColor = Color.Silver;
+            button22.FlatStyle = FlatStyle.Popup;
+            button22.Font = new Font("Microsoft YaHei UI", 8F);
+            button22.ForeColor = Color.White;
+            button22.Location = new Point(667, 124);
+            button22.Name = "button22";
+            button22.RightToLeft = RightToLeft.No;
+            button22.Size = new Size(50, 32);
+            button22.TabIndex = 73;
+            button22.Text = "M-";
+            button22.UseVisualStyleBackColor = false;
+            button22.Visible = false;
+            // 
+            // button23
+            // 
+            button23.BackColor = Color.FromArgb(45, 45, 48);
+            button23.BackgroundImageLayout = ImageLayout.Center;
+            button23.FlatAppearance.BorderColor = Color.Silver;
+            button23.FlatAppearance.BorderSize = 0;
+            button23.FlatAppearance.MouseDownBackColor = Color.Silver;
+            button23.FlatAppearance.MouseOverBackColor = Color.Silver;
+            button23.FlatStyle = FlatStyle.Popup;
+            button23.Font = new Font("Microsoft YaHei UI", 8F);
+            button23.ForeColor = Color.White;
+            button23.Location = new Point(611, 124);
+            button23.Name = "button23";
+            button23.RightToLeft = RightToLeft.No;
+            button23.Size = new Size(50, 32);
+            button23.TabIndex = 74;
+            button23.Text = "M+";
+            button23.UseVisualStyleBackColor = false;
+            button23.Visible = false;
+            // 
+            // button27
+            // 
+            button27.BackColor = Color.FromArgb(45, 45, 48);
+            button27.BackgroundImageLayout = ImageLayout.Center;
+            button27.FlatAppearance.BorderColor = Color.Silver;
+            button27.FlatAppearance.BorderSize = 0;
+            button27.FlatAppearance.MouseDownBackColor = Color.Silver;
+            button27.FlatAppearance.MouseOverBackColor = Color.Silver;
+            button27.FlatStyle = FlatStyle.Popup;
+            button27.Font = new Font("Microsoft YaHei UI", 8F);
+            button27.ForeColor = Color.White;
+            button27.Location = new Point(555, 124);
+            button27.Name = "button27";
+            button27.RightToLeft = RightToLeft.No;
+            button27.Size = new Size(50, 32);
+            button27.TabIndex = 75;
+            button27.Text = "MC";
+            button27.UseVisualStyleBackColor = false;
+            button27.Visible = false;
+            // 
+            // button28
+            // 
+            button28.BackColor = Color.Transparent;
+            button28.BackgroundImageLayout = ImageLayout.Center;
+            button28.FlatAppearance.BorderColor = Color.Silver;
+            button28.FlatAppearance.BorderSize = 0;
+            button28.FlatAppearance.MouseDownBackColor = Color.Silver;
+            button28.FlatAppearance.MouseOverBackColor = Color.Silver;
+            button28.FlatStyle = FlatStyle.Popup;
+            button28.Font = new Font("Microsoft YaHei UI", 12F);
+            button28.ForeColor = Color.White;
+            button28.Location = new Point(473, 564);
+            button28.Name = "button28";
+            button28.RightToLeft = RightToLeft.Yes;
+            button28.Size = new Size(46, 40);
+            button28.TabIndex = 76;
+            button28.Text = "🗑️";
+            button28.UseVisualStyleBackColor = false;
+            button28.Click += button28_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(30, 30, 30);
-            ClientSize = new Size(442, 613);
+            ClientSize = new Size(727, 613);
+            Controls.Add(button28);
+            Controls.Add(button27);
+            Controls.Add(button23);
+            Controls.Add(button22);
             Controls.Add(button21);
             Controls.Add(label11);
             Controls.Add(label18);
@@ -861,5 +953,9 @@
         private Label label11;
         private Label label18;
         private Button button21;
+        private Button button22;
+        private Button button23;
+        private Button button27;
+        private Button button28;
     }
 }

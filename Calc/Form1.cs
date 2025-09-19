@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,18 +10,46 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.Design.AxImporter;
-
+//public Stack()
+//{
+//    decimals = new List<decimal>();
+//}
+//public void Push(decimal i)
+//{
+//    decimals.Insert(0, i);
+//}
+//public decimal Pop()
+//{
+//    decimal a = decimals[0];
+//    decimals.RemoveAt(0);
+//    return a;
+//}
+//public decimal Peek()
+//{
+//    return decimals[0];
+//}
+//public void DelById(int id)
+//{
+//    decimals.RemoveAt(id);
+//}
 namespace Calc
 {
     public partial class Form1 : Form
     {
         string[] actions = new string[2];
+        List<decimal> book = new List<decimal>(), memory = new List<decimal>();
         decimal? num1 = 0, num2;
         char? action;
-        bool toclear = false, cleared = true, canrewrite = false, canwrite = true, canclear, resized = false;
+        bool toclear = false, cleared = true, canrewrite = false, canwrite = true, canclear, resized = false, isbook = true;
         public Form1()
         {
             InitializeComponent();
+            this.Size = new Size(460, 660);
+            string[] a = File.ReadAllText("memory.txt").Split(" ");
+            foreach (string b in a)
+            {
+                memory.Insert(0, decimal.Parse(b));
+            }
         }
         void dii(decimal a)
         {
@@ -232,8 +261,87 @@ namespace Calc
 
         private void button21_Click(object sender, EventArgs e)
         {
-            if(!resized){Size = new Size(745, 660);resized = true; button21.Text = "←"; }
-            else {Size = new Size(460, 660);resized = false;button21.Text = "→"; }
+            if (!resized) { Size = new Size(745, 660); resized = true; button21.Text = "←"; }
+            else { Size = new Size(460, 660); resized = false; button21.Text = "→"; }
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+            if (!isbook)
+            {
+                isbook = true;
+                label8.Visible = true;
+                label11.Visible = true;
+                label12.Visible = true;
+                label14.Visible = true;
+                label16.Visible = true;
+                label10.Font = new Font(label10.Font, FontStyle.Underline);
+                label20.Font = new Font(label10.Font, FontStyle.Regular);
+                if (label9.Text != "")
+                {
+                    button27.Visible = false;
+                    button23.Visible = false;
+                    button22.Visible = false;
+                }
+            }
+        }
+
+        private void label20_Click(object sender, EventArgs e)
+        {
+            if (isbook)
+            {
+                isbook = false;
+                label8.Visible = false;
+                label11.Visible = false;
+                label12.Visible = false;
+                label14.Visible = false;
+                label16.Visible = false;
+                label20.Font = new Font(label10.Font, FontStyle.Underline);
+                label10.Font = new Font(label10.Font, FontStyle.Regular);
+                if (label9.Text != "")
+                {
+                    button27.Visible = true;
+                    button23.Visible = true;
+                    button22.Visible = true;
+                }
+            }
+        }
+
+        private void label9_TextChanged(object sender, EventArgs e)
+        {
+            if (label9.Text != "")
+            {
+                button27.Visible = true;
+                button23.Visible = true;
+                button22.Visible = true;
+            }
+            else
+            {
+                button27.Visible = false;
+                button23.Visible = false;
+                button22.Visible = false;
+            }
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button28_Click(object sender, EventArgs e)
+        {
+            if (!isbook) memory.Clear();
+            else { book.Clear(); }
+            label8.Text = "";
+            label9.Text = "";
+            label12.Text = "";
+            label13.Text = "";
+            label14.Text = "";
+            label15.Text = "";
+            label16.Text = "";
+            label17.Text = "";
+            label11.Text = "";
+            label18.Text = "";
         }
     }
 }

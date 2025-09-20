@@ -665,7 +665,6 @@
             label9.RightToLeft = RightToLeft.No;
             label9.Size = new Size(207, 45);
             label9.TabIndex = 54;
-            label9.Text = "2";
             label9.TextAlign = ContentAlignment.MiddleRight;
             label9.TextChanged += label9_TextChanged;
             label9.Click += label9_Click;
@@ -704,7 +703,6 @@
             label13.RightToLeft = RightToLeft.No;
             label13.Size = new Size(207, 43);
             label13.TabIndex = 64;
-            label13.Text = "2";
             label13.TextAlign = ContentAlignment.MiddleRight;
             label13.TextChanged += label13_TextChanged;
             label13.Click += label13_Click;
@@ -731,7 +729,6 @@
             label15.RightToLeft = RightToLeft.No;
             label15.Size = new Size(207, 43);
             label15.TabIndex = 66;
-            label15.Text = "2";
             label15.TextAlign = ContentAlignment.MiddleRight;
             label15.TextChanged += label15_TextChanged;
             label15.Click += label15_Click;
@@ -758,7 +755,6 @@
             label17.RightToLeft = RightToLeft.No;
             label17.Size = new Size(207, 43);
             label17.TabIndex = 68;
-            label17.Text = "2";
             label17.TextAlign = ContentAlignment.MiddleRight;
             label17.TextChanged += label17_TextChanged;
             label17.Click += label17_Click;
@@ -785,7 +781,6 @@
             label18.RightToLeft = RightToLeft.No;
             label18.Size = new Size(207, 43);
             label18.TabIndex = 70;
-            label18.Text = "2";
             label18.TextAlign = ContentAlignment.MiddleRight;
             label18.TextChanged += label18_TextChanged;
             label18.Click += label18_Click;
@@ -1230,6 +1225,7 @@
             Controls.Add(label1);
             Name = "Form1";
             Text = "Form1";
+            FormClosed += Form1_FormClosed;
             ResumeLayout(false);
             PerformLayout();
         }

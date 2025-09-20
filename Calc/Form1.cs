@@ -12,36 +12,13 @@ using System.Windows.Forms;
 using System.Xml.Linq;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using static System.Windows.Forms.Design.AxImporter;
-//public Stack()
-//{
-//    decimals = new List<decimal>();
-//}
-//public void Push(decimal i)
-//{
-//    decimals.Insert(0, i);
-//}
-//public decimal Pop()
-//{
-//    decimal a = decimals[0];
-//    decimals.RemoveAt(0);
-//    return a;
-//}
-//public decimal Peek()
-//{
-//    return decimals[0];
-//}
-//public void DelById(int id)
-//{
-//    decimals.RemoveAt(id);
-//}
-
-//var element = dict.ElementAt(1);
 namespace Calc
 {
     public partial class Form1 : Form
     {
         string[] actions = new string[2];
-        Dictionary<string, decimal> book = new Dictionary<string, decimal>(); List<decimal> memory = new List<decimal>();
+        List<KeyValuePair<string, decimal>> book = new List<KeyValuePair<string, decimal>>();
+        List<decimal> memory = new List<decimal>();
         decimal? num1 = 0, num2;
         char? action;
         bool toclear = true, cleared = false, canrewrite = false, canwrite = true, resized = false, isbook = true;
@@ -52,7 +29,7 @@ namespace Calc
             string[] a = File.ReadAllText("D:\\ITSTEP\\Csharp\\Calculator\\memory.txt").Split(" ");
             foreach (string b in a)
             {
-                if (!string.IsNullOrWhiteSpace(b))memory.Add(decimal.Parse(b));
+                if (!string.IsNullOrWhiteSpace(b)) memory.Add(decimal.Parse(b));
             }
         }
         void dii(decimal a)
@@ -146,63 +123,21 @@ namespace Calc
         }
         void FeelBook()
         {
-            if (book.Count >= 0)
+            Label[] keyLabels = { label8, label12, label14, label16, label11 };
+            Label[] valueLabels = { label9, label13, label15, label17, label18 };
+
+            for (int i = 0; i < keyLabels.Length; i++)
             {
-                label8.Text = "";
-                label9.Text = "";
-                label12.Text = "";
-                label13.Text = "";
-                label14.Text = "";
-                label15.Text = "";
-                label16.Text = "";
-                label17.Text = "";
-                label11.Text = "";
-                label18.Text = "";
+                keyLabels[i].Text = "";
+                valueLabels[i].Text = "";
             }
-            if (book.Count() >= 1)
+
+            int count = book.Count;
+            for (int i = 0; i < Math.Min(5, count); i++)
             {
-                label8.Text = (book.ElementAt(book.Count() - 1).Key).ToString();
-                label9.Text = (book.ElementAt(book.Count() - 1).Value).ToString();
-                label12.Text = "";
-                label13.Text = "";
-                label14.Text = "";
-                label15.Text = "";
-                label16.Text = "";
-                label17.Text = "";
-                label11.Text = "";
-                label18.Text = "";
-            }
-            if (book.Count() >= 2)
-            {
-                label12.Text = (book.ElementAt(book.Count() - 2).Key).ToString();
-                label13.Text = (book.ElementAt(book.Count() - 2).Value).ToString();
-                label14.Text = "";
-                label15.Text = "";
-                label16.Text = "";
-                label17.Text = "";
-                label11.Text = "";
-                label18.Text = "";
-            }
-            if (book.Count() >= 3)
-            {
-                label14.Text = (book.ElementAt(book.Count() - 3).Key).ToString();
-                label15.Text = (book.ElementAt(book.Count() - 3).Value).ToString();
-                label16.Text = "";
-                label17.Text = "";
-                label11.Text = "";
-                label18.Text = "";
-            }
-            if (book.Count() >= 4)
-            {
-                label16.Text = (book.ElementAt(book.Count() - 4).Key).ToString();
-                label17.Text = (book.ElementAt(book.Count() - 4).Value).ToString();
-                label11.Text = "";
-                label18.Text = "";
-            }
-            if (book.Count() >= 5)
-            {
-                label11.Text = (book.ElementAt(book.Count() - 5).Key).ToString();
-                label18.Text = (book.ElementAt(book.Count() - 5).Value).ToString();
+                var element = book[count - 1 - i];
+                keyLabels[i].Text = element.Key;
+                valueLabels[i].Text = element.Value.ToString();
             }
         }
         decimal? ActionToDo(decimal? a, decimal? b)
@@ -223,7 +158,7 @@ namespace Calc
         private void button16_Click(object sender, EventArgs e)
         {
             if (label1.Text != "") actions = label1.Text.Split(',');
-            if (num1 != null && num2 == null && label1.Text != "")
+            if (num1 != null && num2 == null && label1.Text != "" && action != null)
             {
                 num2 = LabToDec();
                 label2.Text = $"{num1} {action} {num2} =";
@@ -243,14 +178,13 @@ namespace Calc
                 num1 = ActionToDo(num1, num2);
                 label1.Text = num1.ToString();
             }
-            if (label2.Text != "" && label1.Text != "")
+            if (!string.IsNullOrEmpty(label2.Text) && !string.IsNullOrEmpty(label1.Text))
             {
-                book.Add(label2.Text, decimal.Parse(label1.Text));
-                if(isbook)FeelBook();
+                book.Add(new KeyValuePair<string, decimal>(label2.Text, decimal.Parse(label1.Text)));
+                if (isbook) FeelBook();
             }
-
             canrewrite = true; toclear = true;
-        }//   ====
+        }
         private void button2_Click(object sender, EventArgs e)
         {
             action = '+';
@@ -319,14 +253,10 @@ namespace Calc
         {
             num1 = 0; num2 = null; label1.Text = "0"; label2.Text = ""; action = null;
         }
-
         private void button17_Click(object sender, EventArgs e)
         {
             num1 = 0; label1.Text = "0";
-            if (label1.Text.Split(" ").Count() == 3)
-            {
-                label2.Text = "";
-            }
+            label2.Text = "";
         }
 
         private void button21_Click(object sender, EventArgs e)
@@ -481,8 +411,8 @@ namespace Calc
 
         private void button29_Click(object sender, EventArgs e)
         {
-
-        }//+/-
+            label1.Text = (decimal.Parse(label1.Text)*(-1)).ToString();
+        }
 
         private void mc2_Click(object sender, EventArgs e)
         {
@@ -739,11 +669,48 @@ namespace Calc
             string path = "D:\\ITSTEP\\Csharp\\Calculator\\memory.txt";
             File.WriteAllText(path, "");
             string b = "";
-            foreach(decimal a in memory)
+            foreach (decimal a in memory)
             {
                 b += a.ToString() + " ";
             }
             File.WriteAllText(path, b);
         }
+
+        private void Form1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            switch (e.KeyChar)
+            {
+                case '=':
+                    button16_Click(sender, e);break;
+                case '+':
+                    button2_Click(sender, e);
+                    break;
+                case '-':
+                    button8_Click(sender, e);
+                    break;
+                case '*':
+                    button12_Click(sender, e); break;
+                case '/':
+                    button24_Click(sender, e);break;
+                case '%':
+                    button19_Click(sender, e);break;
+                case '0':
+                case '1':
+                case '2':
+                case '3':
+                case '4':
+                case '5':
+                case '6':
+                case '7':
+                case '8':
+                case '9':
+                    dii(e.KeyChar);
+                    break;
+                default:
+                    break;
+            }
+
+        }
+
     }
 }

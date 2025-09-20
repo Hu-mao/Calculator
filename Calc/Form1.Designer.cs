@@ -1226,6 +1226,7 @@
             Name = "Form1";
             Text = "Form1";
             FormClosed += Form1_FormClosed;
+            KeyPress += Form1_KeyPress;
             ResumeLayout(false);
             PerformLayout();
         }

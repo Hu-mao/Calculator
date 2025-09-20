@@ -26,7 +26,7 @@ namespace Calc
         {
             InitializeComponent();
             this.Size = new Size(460, 660);
-            string[] a = File.ReadAllText("D:\\ITSTEP\\Csharp\\Calculator\\memory.txt").Split(" ");
+            string[] a = File.ReadAllText("memory.txt").Split(" ");
             foreach (string b in a)
             {
                 if (!string.IsNullOrWhiteSpace(b)) memory.Add(decimal.Parse(b));
@@ -666,7 +666,7 @@ namespace Calc
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
-            string path = "D:\\ITSTEP\\Csharp\\Calculator\\memory.txt";
+            string path = "memory.txt";
             File.WriteAllText(path, "");
             string b = "";
             foreach (decimal a in memory)
